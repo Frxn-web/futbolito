@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚽ FutbolLatino Pro - Noticias Deportivas en Vivo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #22c55e;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #22c55e;
+        }
+
+        .live-indicator {
+            background: #dc2626;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 3rem 0;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="field" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="%2322c55e" opacity="0.1"/><circle cx="50" cy="50" r="30" fill="none" stroke="%2322c55e" stroke-width="2" opacity="0.3"/></pattern></defs><rect width="100%" height="100%" fill="url(%23field)"/></svg>');
+            background-size: cover;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #22c55e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #22c55e, #16a34a);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+        }
+
+        /* Ad Space */
+        .ad-banner {
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            color: #1f2937;
+            text-align: center;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .news-section {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #22c55e;
+            border-bottom: 2px solid #22c55e;
+            padding-bottom: 0.5rem;
+        }
+
+        .news-card {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #22c55e;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .news-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(34, 197, 94, 0.2);
+        }
+
+        .news-card h3 {
+            color: #22c55e;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-meta {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .widget {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .live-scores {
+            text-align: center;
+        }
+
+        .match {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .score {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #22c55e;
+        }
+
+        .ad-sidebar {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.95);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 2px solid #22c55e;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+        }
+
+        /* Animation for news cards */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .news-card {
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        .news-card:nth-child(1) { animation-delay: 0.1s; }
+        .news-card:nth-child(2) { animation-delay: 0.2s; }
+        .news-card:nth-child(3) { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">⚽ FutbolLatino Pro</div>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="#noticias">Noticias</a></li>
+                        <li><a href="#resultados">Resultados</a></li>
+                        <li><a href="#ligas">Ligas</a></li>
+                        <li><a href="#transferencias">Transferencias</a></li>
+                    </ul>
+                </nav>
+                <div class="live-indicator">🔴 EN VIVO</div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Tu Fuente #1 de Fútbol Latino</h1>
+            <p>Noticias, resultados en vivo, análisis y todo sobre el fútbol latinoamericano</p>
+            <button class="cta-button" onclick="scrollToNews()">Ver Últimas Noticias</button>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="ad-banner">
+            🎯 HILLTOP ADS - Espacio Publicitario Premium | Máxima Visibilidad Para Tu Marca
+        </div>
+
+        <div class="main-content">
+            <main class="news-section" id="noticias">
+                <h2 class="section-title">🔥 Últimas Noticias</h2>
+                
+                <article class="news-card" onclick="openNews(1)">
+                    <h3>Lionel Messi Brilla en la Copa América 2024</h3>
+                    <div class="news-meta">⏰ Hace 2 horas | 👀 15,234 vistas</div>
+                    <p>El astro argentino demuestra una vez más por qué es considerado el mejor jugador del mundo con una actuación espectacular...</p>
+                </article>
+
+                <article class="news-card" onclick="openNews(2)">
+                    <h3>Real Madrid Interesado en Joven Promesa Brasileña</h3>
+                    <div class="news-meta">⏰ Hace 4 horas | 👀 8,756 vistas</div>
+                    <p>Los merengues estarían siguiendo de cerca al mediocampista de 19 años que ha causado sensación en el Brasileirão...</p>
+                </article>
+
+                <article class="news-card" onclick="openNews(3)">
+                    <h3>Clásico Boca vs River: Todo lo que Necesitas Saber</h3>
+                    <div class="news-meta">⏰ Hace 6 horas | 👀 22,891 vistas</div>
+                    <p>Se acerca uno de los partidos más esperados del año. Análisis, estadísticas y predicciones del superclásico argentino...</p>
+                </article>
+            </main>
+
+            <aside class="sidebar">
+                <div class="widget live-scores">
+                    <h3 class="section-title">⚽ Marcadores en Vivo</h3>
+                    
+                    <div class="match">
+                        <span>🇦🇷 Boca Juniors</span>
+                        <span class="score">2-1</span>
+                        <span>River Plate 🇦🇷</span>
+                    </div>
+                    
+                    <div class="match">
+                        <span>🇧🇷 Flamengo</span>
+                        <span class="score">1-0</span>
+                        <span>Palmeiras 🇧🇷</span>
+                    </div>
+                    
+                    <div class="match">
+                        <span>🇲🇽 América</span>
+                        <span class="score">3-2</span>
+                        <span>Chivas 🇲🇽</span>
+                    </div>
+                </div>
+
+                <div class="ad-sidebar">
+                    <h3>💰 Patrocinio Premium</h3>
+                    <p>¿Quieres llegar a miles de fanáticos del fútbol?</p>
+                    <p>Contacta con HILLTOP ADS</p>
+                    <button style="background: white; color: #7c3aed; border: none; padding: 0.5rem 1rem; border-radius: 25px; margin-top: 1rem; cursor: pointer;">Anúnciate Aquí</button>
+                </div>
+
+                <div class="widget">
+                    <h3 class="section-title">📊 Estadísticas</h3>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>Goleador Copa América:</strong><br>
+                        🥇 L. Messi - 6 goles
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <strong>Equipo más visto:</strong><br>
+                        🏆 Argentina - 2.3M seguidores
+                    </div>
+                    <div>
+                        <strong>Transferencia más cara:</strong><br>
+                        💰 $45M - Vinicius Jr.
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 FutbolLatino Pro | Powered by HILLTOP ADS</p>
+            <p>🔥 El sitio #1 de noticias deportivas en Latinoamérica</p>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToNews() {
+            document.getElementById('noticias').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function openNews(id) {
+            const messages = [
+                "¡Messi sigue haciendo historia! 🐐",
+                "¡Los fichajes más emocionantes están llegando! 💫",
+                "¡El clásico promete ser épico! 🔥"
+            ];
+            alert(messages[id - 1]);
+        }
+
+        // Simulación de actualizaciones en vivo
+        function updateLiveScores() {
+            const scores = document.querySelectorAll('.score');
+            scores.forEach(score => {
+                if (Math.random() > 0.9) {
+                    const currentScore = score.textContent.split('-');
+                    const home = parseInt(currentScore[0]);
+                    const away = parseInt(currentScore[1]);
+                    
+                    if (Math.random() > 0.5) {
+                        score.textContent = `${home + 1}-${away}`;
+                    } else {
+                        score.textContent = `${home}-${away + 1}`;
+                    }
+                    
+                    score.style.animation = 'pulse 1s ease';
+                    setTimeout(() => score.style.animation = '', 1000);
+                }
+            });
+        }
+
+        // Actualizar marcadores cada 10 segundos
+        setInterval(updateLiveScores, 10000);
+
+        // Efectos de hover para las tarjetas de noticias
+        document.querySelectorAll('.news-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.borderLeftColor = '#fbbf24';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.borderLeftColor = '#22c55e';
+            });
+        });
+
+        // Contador de vistas simulado
+        function updateViews() {
+            const viewCounters = document.querySelectorAll('.news-meta');
+            viewCounters.forEach(counter => {
+                const currentText = counter.textContent;
+                const viewsMatch = currentText.match(/(\d+,?\d*) vistas/);
+                if (viewsMatch) {
+                    const currentViews = parseInt(viewsMatch[1].replace(',', ''));
+                    const newViews = currentViews + Math.floor(Math.random() * 50);
+                    const newText = currentText.replace(/\d+,?\d* vistas/, newViews.toLocaleString() + ' vistas');
+                    counter.textContent = newText;
+                }
+            });
+        }
+
+        // Actualizar vistas cada 30 segundos
+        setInterval(updateViews, 30000);
+    </script>
+</body>
+</html>
