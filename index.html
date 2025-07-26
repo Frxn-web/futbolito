@@ -7,6 +7,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>⚽ FutbolLatino Pro - Noticias Deportivas en Vivo</title>
+    
+    <!-- Script de monetización principal -->
+    <script src="https://fpyf8.com/88/tag.min.js" data-zone="159371" async data-cfasync="false"></script>
+    
     <style>
         * {
             margin: 0;
@@ -85,6 +89,94 @@
             50% { opacity: 0.7; }
         }
 
+        /* Ad Spaces - Optimizados para monetización */
+        .ad-banner {
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            color: #1f2937;
+            text-align: center;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ad-header {
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .ad-between-news {
+            background: linear-gradient(45deg, #3b82f6, #2563eb);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .ad-floating {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #7c3aed, #a855f7);
+            color: white;
+            padding: 1rem;
+            border-radius: 12px;
+            max-width: 300px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 1000;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .ad-floating:hover {
+            transform: scale(1.05);
+        }
+
+        .ad-close {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .ad-sidebar-extra {
+            background: linear-gradient(135deg, #059669, #047857);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
         /* Hero Section */
         .hero {
             padding: 3rem 0;
@@ -123,18 +215,6 @@
         .cta-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
-        }
-
-        /* Ad Space */
-        .ad-banner {
-            background: linear-gradient(45deg, #fbbf24, #f59e0b);
-            color: #1f2937;
-            text-align: center;
-            padding: 2rem;
-            margin: 2rem 0;
-            border-radius: 15px;
-            font-weight: bold;
-            font-size: 1.1rem;
         }
 
         /* Main Content */
@@ -253,6 +333,14 @@
             .nav-menu {
                 display: none;
             }
+
+            .ad-floating {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                margin: 1rem 0;
+                max-width: 100%;
+            }
         }
 
         /* Animation for news cards */
@@ -274,11 +362,45 @@
         .news-card:nth-child(1) { animation-delay: 0.1s; }
         .news-card:nth-child(2) { animation-delay: 0.2s; }
         .news-card:nth-child(3) { animation-delay: 0.3s; }
+
+        /* Newsletter signup para más engagement */
+        .newsletter {
+            background: linear-gradient(45deg, #16a34a, #22c55e);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .newsletter input {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 25px;
+            margin-right: 1rem;
+            width: 250px;
+            font-size: 1rem;
+        }
+
+        .newsletter button {
+            background: #0f172a;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
+            <!-- Ad Header para máxima visibilidad -->
+            <div class="ad-header">
+                🎯 ZONA PREMIUM DE PUBLICIDAD - Máxima Exposición | HILLTOP ADS
+            </div>
+            
             <div class="header-content">
                 <div class="logo">⚽ FutbolLatino Pro</div>
                 <nav>
@@ -307,6 +429,16 @@
             🎯 HILLTOP ADS - Espacio Publicitario Premium | Máxima Visibilidad Para Tu Marca
         </div>
 
+        <!-- Newsletter para aumentar engagement -->
+        <div class="newsletter">
+            <h3>📧 ¡Suscríbete y no te pierdas nada!</h3>
+            <p>Recibe las mejores noticias del fútbol directo en tu email</p>
+            <div style="margin-top: 1rem;">
+                <input type="email" placeholder="tu@email.com" id="emailInput">
+                <button onclick="subscribeNewsletter()">Suscribirse</button>
+            </div>
+        </div>
+
         <div class="main-content">
             <main class="news-section" id="noticias">
                 <h2 class="section-title">🔥 Últimas Noticias</h2>
@@ -317,20 +449,50 @@
                     <p>El astro argentino demuestra una vez más por qué es considerado el mejor jugador del mundo con una actuación espectacular...</p>
                 </article>
 
+                <!-- Ad entre noticias para mayor monetización -->
+                <div class="ad-between-news">
+                    💰 ESPACIO PUBLICITARIO VIP - Tu anuncio aquí puede llegar a miles de fanáticos
+                </div>
+
                 <article class="news-card" onclick="openNews(2)">
                     <h3>Real Madrid Interesado en Joven Promesa Brasileña</h3>
                     <div class="news-meta">⏰ Hace 4 horas | 👀 8,756 vistas</div>
                     <p>Los merengues estarían siguiendo de cerca al mediocampista de 19 años que ha causado sensación en el Brasileirão...</p>
                 </article>
 
+                <!-- Segundo ad entre noticias -->
+                <div class="ad-between-news">
+                    🚀 PATROCINIO EXCLUSIVO - Conecta con la pasión del fútbol latino
+                </div>
+
                 <article class="news-card" onclick="openNews(3)">
                     <h3>Clásico Boca vs River: Todo lo que Necesitas Saber</h3>
                     <div class="news-meta">⏰ Hace 6 horas | 👀 22,891 vistas</div>
                     <p>Se acerca uno de los partidos más esperados del año. Análisis, estadísticas y predicciones del superclásico argentino...</p>
                 </article>
+
+                <!-- Más noticias para más contenido y más ads -->
+                <article class="news-card" onclick="openNews(4)">
+                    <h3>Neymar Confirma su Continuidad en Al-Hilal</h3>
+                    <div class="news-meta">⏰ Hace 8 horas | 👀 12,445 vistas</div>
+                    <p>La estrella brasileña despeja todas las dudas sobre su futuro y confirma que seguirá en Arabia Saudí...</p>
+                </article>
+
+                <article class="news-card" onclick="openNews(5)">
+                    <h3>Copa Libertadores: Así van los Octavos de Final</h3>
+                    <div class="news-meta">⏰ Hace 10 horas | 👀 18,332 vistas</div>
+                    <p>Repaso completo de todos los equipos clasificados y análisis de los enfrentamientos más esperados...</p>
+                </article>
             </main>
 
             <aside class="sidebar">
+                <!-- Ad sidebar extra para más monetización -->
+                <div class="ad-sidebar-extra">
+                    <h3>🎯 PROMOCIÓN ESPECIAL</h3>
+                    <p>¡Aumenta tus ventas con HILLTOP ADS!</p>
+                    <p>Publicidad inteligente para tu negocio</p>
+                </div>
+
                 <div class="widget live-scores">
                     <h3 class="section-title">⚽ Marcadores en Vivo</h3>
                     
@@ -357,7 +519,14 @@
                     <h3>💰 Patrocinio Premium</h3>
                     <p>¿Quieres llegar a miles de fanáticos del fútbol?</p>
                     <p>Contacta con HILLTOP ADS</p>
-                    <button style="background: white; color: #7c3aed; border: none; padding: 0.5rem 1rem; border-radius: 25px; margin-top: 1rem; cursor: pointer;">Anúnciate Aquí</button>
+                    <button style="background: white; color: #7c3aed; border: none; padding: 0.5rem 1rem; border-radius: 25px; margin-top: 1rem; cursor: pointer;" onclick="contactAdvertiser()">Anúnciate Aquí</button>
+                </div>
+
+                <!-- Segundo ad sidebar -->
+                <div class="ad-sidebar-extra">
+                    <h3>📱 DESCARGA NUESTRA APP</h3>
+                    <p>Noticias al instante</p>
+                    <p>¡Ya disponible!</p>
                 </div>
 
                 <div class="widget">
@@ -377,12 +546,26 @@
                 </div>
             </aside>
         </div>
+
+        <!-- Ad final antes del footer -->
+        <div class="ad-banner">
+            🔥 ÚLTIMA OPORTUNIDAD - Espacio publicitario de alta conversión | HILLTOP ADS
+        </div>
+    </div>
+
+    <!-- Ad flotante para engagement continuo -->
+    <div class="ad-floating" id="floatingAd">
+        <span class="ad-close" onclick="closeFloatingAd()">&times;</span>
+        <h4>💎 Oferta Especial</h4>
+        <p>¡No te pierdas las mejores apuestas deportivas!</p>
+        <button style="background: white; color: #7c3aed; border: none; padding: 0.5rem 1rem; border-radius: 15px; margin-top: 0.5rem; cursor: pointer;">Ver Más</button>
     </div>
 
     <footer>
         <div class="container">
             <p>&copy; 2025 FutbolLatino Pro | Powered by HILLTOP ADS</p>
             <p>🔥 El sitio #1 de noticias deportivas en Latinoamérica</p>
+            <p>📧 Contacto: ads@futbollatinopro.com | 📱 WhatsApp: +1-800-FUTBOL</p>
         </div>
     </footer>
 
@@ -395,9 +578,47 @@
             const messages = [
                 "¡Messi sigue haciendo historia! 🐐",
                 "¡Los fichajes más emocionantes están llegando! 💫",
-                "¡El clásico promete ser épico! 🔥"
+                "¡El clásico promete ser épico! 🔥",
+                "¡Neymar confirma su futuro! ⭐",
+                "¡Copa Libertadores al rojo vivo! 🏆"
             ];
             alert(messages[id - 1]);
+            
+            // Incrementar vistas al hacer clic
+            incrementViews(id);
+        }
+
+        function subscribeNewsletter() {
+            const email = document.getElementById('emailInput').value;
+            if (email && email.includes('@')) {
+                alert('¡Gracias por suscribirte! Recibirás las mejores noticias del fútbol 📧⚽');
+                document.getElementById('emailInput').value = '';
+            } else {
+                alert('Por favor ingresa un email válido');
+            }
+        }
+
+        function contactAdvertiser() {
+            alert('📞 Contacto publicitario:\n📧 ads@futbollatinopro.com\n📱 WhatsApp: +1-800-FUTBOL\n\n¡Llevemos tu marca al siguiente nivel!');
+        }
+
+        function closeFloatingAd() {
+            document.getElementById('floatingAd').style.display = 'none';
+        }
+
+        function incrementViews(newsId) {
+            const viewCounters = document.querySelectorAll('.news-meta');
+            const counter = viewCounters[newsId - 1];
+            if (counter) {
+                const currentText = counter.textContent;
+                const viewsMatch = currentText.match(/(\d+,?\d*) vistas/);
+                if (viewsMatch) {
+                    const currentViews = parseInt(viewsMatch[1].replace(',', ''));
+                    const newViews = currentViews + 1;
+                    const newText = currentText.replace(/\d+,?\d* vistas/, newViews.toLocaleString() + ' vistas');
+                    counter.textContent = newText;
+                }
+            }
         }
 
         // Simulación de actualizaciones en vivo
@@ -452,6 +673,30 @@
 
         // Actualizar vistas cada 30 segundos
         setInterval(updateViews, 30000);
+
+        // Mostrar ad flotante después de 10 segundos
+        setTimeout(() => {
+            document.getElementById('floatingAd').style.display = 'block';
+        }, 10000);
+
+        // Analytics simulado para monetización
+        function trackUserEngagement() {
+            // Simular seguimiento de interacciones
+            document.addEventListener('click', function(e) {
+                console.log('Interacción detectada:', e.target.tagName);
+            });
+            
+            // Simular tiempo en página
+            let timeOnPage = 0;
+            setInterval(() => {
+                timeOnPage += 5;
+                if (timeOnPage % 60 === 0) {
+                    console.log(`Usuario activo por ${timeOnPage} segundos`);
+                }
+            }, 5000);
+        }
+
+        trackUserEngagement();
     </script>
 </body>
 </html>
